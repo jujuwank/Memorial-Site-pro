@@ -529,8 +529,128 @@ body.light .menu {
   13 - SECTION HOMMAGES
   Livre d'or, message de soutien et bouton WhatsApp.
 ============================================================*/
-.actions-row {
-  margin-top: 22px;
+/* ==============================
+   SECTION SOUTIEN / HOMMAGES
+============================== */
+
+.support-intro {
+  max-width: 720px;
+  margin: 0 auto 35px;
+  text-align: center;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.support-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 30px;
+}
+
+.support-card {
+  background: var(--card-bg);
+  border: 1px solid rgba(201, 162, 76, 0.25);
+  border-radius: 24px;
+  padding: 30px 24px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.support-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.12);
+}
+
+.support-card h3 {
+  margin: 16px 0 10px;
+  font-size: 1.25rem;
+}
+
+.support-card p {
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin-bottom: 22px;
+}
+
+.support-icon,
+.support-logo-circle {
+  width: 78px;
+  height: 78px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+}
+
+.support-logo-circle img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+.form-icon {
+  background: rgba(201, 162, 76, 0.15);
+}
+
+.whatsapp-circle {
+  background: rgba(37, 211, 102, 0.14);
+}
+
+.paypal-circle {
+  background: rgba(0, 48, 135, 0.12);
+}
+
+.support-button {
+  display: inline-block;
+  padding: 13px 22px;
+  border-radius: 999px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.3s ease;
+}
+
+.form-button {
+  background: #c9a24c;
+}
+
+.form-button:hover {
+  background: #b58d35;
+  transform: translateY(-2px);
+}
+
+.whatsapp-button-pro {
+  background: #25d366;
+}
+
+.whatsapp-button-pro:hover {
+  background: #1ebe5d;
+  transform: translateY(-2px);
+}
+
+.paypal-button {
+  background: #003087;
+}
+
+.paypal-button:hover {
+  background: #0070ba;
+  transform: translateY(-2px);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .support-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .support-button {
+    width: 100%;
+  }
 }
 
 /*============================================================
