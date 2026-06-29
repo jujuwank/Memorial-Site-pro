@@ -1,0 +1,814 @@
+/*============================================================
+  MemorialSite Pro v2.0
+  Fichier : style.css
+  Rôle    : Design complet du site de veillée
+============================================================*/
+
+/*============================================================
+  01 - VARIABLES / COULEURS DU SITE
+  Ici tu modifies les couleurs générales du site.
+============================================================*/
+:root {
+  --bg: #0d0d0f;
+  --card: rgba(255, 255, 255, 0.075);
+  --card-strong: rgba(255, 255, 255, 0.115);
+  --text: #fff8ea;
+  --muted: #cfc4ad;
+  --gold: #f3cf70;
+  --gold-dark: #916517;
+  --line: rgba(243, 207, 112, 0.22);
+  --shadow: rgba(0, 0, 0, 0.35);
+}
+
+/* Mode clair : couleurs utilisées quand on active le thème clair */
+body.light {
+  --bg: #f8f1e5;
+  --card: rgba(255, 255, 255, 0.72);
+  --card-strong: rgba(255, 255, 255, 0.95);
+  --text: #21190f;
+  --muted: #6f604d;
+  --gold: #b88624;
+  --gold-dark: #7a5416;
+  --line: rgba(184, 134, 36, 0.28);
+  --shadow: rgba(80, 55, 20, 0.16);
+}
+
+/*============================================================
+  02 - STYLE GLOBAL
+  Ici tu modifies le comportement général de toute la page.
+============================================================*/
+* {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(243, 207, 112, 0.11), transparent 28%),
+    radial-gradient(circle at 80% 20%, rgba(243, 207, 112, 0.08), transparent 30%),
+    var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+button,
+input,
+a {
+  font-family: inherit;
+}
+
+main {
+  max-width: 1060px;
+  margin: auto;
+  padding: 26px 18px 60px;
+}
+
+/*============================================================
+  03 - PAGE DE CHARGEMENT
+  Design de l'écran affiché pendant le chargement.
+============================================================*/
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: #0d0d0f;
+  z-index: 999;
+  display: grid;
+  place-content: center;
+  text-align: center;
+  transition: opacity 0.45s, visibility 0.45s;
+}
+
+.page-loader.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.candle-loader {
+  width: 26px;
+  height: 58px;
+  border-radius: 14px 14px 6px 6px;
+  margin: 0 auto 18px;
+  background: linear-gradient(#fff4c8, #d3a244);
+  position: relative;
+}
+
+.candle-loader:before {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: -30px;
+  width: 13px;
+  height: 25px;
+  border-radius: 60% 40% 55% 45%;
+  background: #f3cf70;
+  box-shadow: 0 0 25px #f3cf70;
+  animation: flicker 1s infinite alternate;
+}
+
+/*============================================================
+  04 - BOUTON THÈME CLAIR / SOMBRE
+  Bouton rond en haut à droite.
+============================================================*/
+.theme-toggle {
+  position: fixed;
+  right: 18px;
+  top: 18px;
+  z-index: 10;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: var(--card-strong);
+  color: var(--text);
+  cursor: pointer;
+  backdrop-filter: blur(12px);
+}
+
+/*============================================================
+  05 - HEADER / ACCUEIL / HERO
+  Grande section du haut avec fond, photo, nom, verset et boutons.
+============================================================*/
+.hero {
+  min-height: 100vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 30px 20px;
+  overflow: hidden;
+}
+
+/* Fond de la page d'accueil */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background: url("assets/fond-veillee.jpg") center/cover no-repeat;
+  transform: scale(1.05);
+  animation: slowZoom 18s ease-in-out infinite alternate;
+}
+
+/* Voile sombre sur le fond pour rendre le texte lisible */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.86)),
+    radial-gradient(circle, transparent 0%, rgba(0, 0, 0, 0.4) 65%);
+}
+
+/* Contenu au centre de l'accueil */
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 820px;
+  color: white;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+/* Photo de la défunte */
+.portrait-frame {
+  width: clamp(300px, 38vw, 380px);
+  height: clamp(300px, 38vw, 380px);
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  padding: 8px;
+  background: linear-gradient(135deg, #d4af37, #fff3b0, #b8860b);
+  box-shadow: 0 0 45px rgba(212, 175, 55, 0.55);
+}
+
+.portrait-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  background: #222;
+}
+
+/* Petit titre : Veillée de recueillement */
+.small-title {
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+/* Nom de la défunte */
+.hero h1 {
+  font-size: clamp(28px, 3.5vw, 46px);
+  line-height: 1.2;
+  margin: 10px 0 18px;
+  font-family: Georgia, serif;
+  font-weight: 600;
+}
+
+/* Dates de naissance et décès */
+.dates {
+  font-size: clamp(18px, 4vw, 24px);
+  color: var(--gold);
+  margin: 14px 0;
+}
+
+/* Verset biblique */
+.verse {
+  font-size: clamp(15px, 3vw, 18px);
+  font-style: italic;
+  line-height: 1.55;
+  max-width: 700px;
+  margin: 25px auto 10px;
+}
+
+.verse span {
+  font-style: normal;
+  color: var(--gold);
+}
+
+/*============================================================
+  06 - COMPTE À REBOURS
+  Design des blocs jours, heures, minutes, secondes.
+============================================================*/
+.countdown {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  max-width: 520px;
+  margin: 26px auto;
+}
+
+.countdown div {
+  background: rgba(255, 255, 255, 0.11);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 12px 8px;
+  backdrop-filter: blur(12px);
+}
+
+.countdown strong {
+  display: block;
+  font-size: 24px;
+  color: var(--gold);
+}
+
+.countdown span {
+  display: block;
+  font-size: 12px;
+  color: #f2eadb;
+}
+
+/*============================================================
+  07 - BOUTONS GÉNÉRAUX
+  Design de tous les boutons du site.
+============================================================*/
+.hero-actions,
+.actions-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main-button,
+.secondary-button,
+.ghost-button,
+.whatsapp-button,
+.cantique-button {
+  display: inline-block;
+  padding: 14px 22px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  border: 1px solid transparent;
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.main-button,
+.cantique-button {
+  background: var(--gold);
+  color: #1b1307;
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+.ghost-button,
+.secondary-button {
+  color: var(--gold);
+  border-color: var(--line);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.whatsapp-button {
+  color: white;
+  background: #178f4a;
+}
+
+.main-button:hover,
+.secondary-button:hover,
+.ghost-button:hover,
+.whatsapp-button:hover,
+.cantique-button:hover {
+  transform: translateY(-2px);
+}
+
+/*============================================================
+  08 - MENU DE NAVIGATION
+  Barre de menu collée en haut quand on défile.
+============================================================*/
+.menu {
+  position: sticky;
+  top: 0;
+  z-index: 8;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 12px;
+  background: rgba(13, 13, 15, 0.78);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--line);
+}
+
+body.light .menu {
+  background: rgba(248, 241, 229, 0.82);
+}
+
+.menu a {
+  color: var(--text);
+  text-decoration: none;
+  padding: 10px 13px;
+  border-radius: 999px;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.menu a.active,
+.menu a:hover {
+  background: var(--gold);
+  color: #1b1307;
+}
+
+/*============================================================
+  09 - CARTES / SECTIONS COMMUNES
+  Design commun aux blocs : bienvenue, programme, cantiques, etc.
+============================================================*/
+.welcome-card,
+.card-section,
+.comfort-section {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  padding: clamp(22px, 4vw, 34px);
+  margin: 24px 0;
+  box-shadow: 0 18px 50px var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+/* Titres de section : Programme, Cantiques, Galerie, etc. */
+.section-title p {
+  margin: 0 0 8px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--gold);
+}
+
+.section-title h2,
+.comfort-section h2 {
+  margin-top: 0;
+  font-size: clamp(28px, 5vw, 42px);
+}
+
+/*============================================================
+  10 - SECTION BIENVENUE
+  Premier texte juste après le menu.
+============================================================*/
+.welcome-card {
+  font-size: 20px;
+  line-height: 1.7;
+  text-align: center;
+}
+
+/*============================================================
+  11 - SECTION PROGRAMME
+  Timeline du déroulement de la veillée.
+============================================================*/
+.timeline {
+  position: relative;
+}
+
+.timeline:before {
+  content: "";
+  position: absolute;
+  left: 92px;
+  top: 10px;
+  bottom: 10px;
+  width: 1px;
+  background: var(--line);
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 28px;
+  padding: 16px 0;
+  position: relative;
+}
+
+.timeline-item:after {
+  content: "";
+  position: absolute;
+  left: 86px;
+  top: 23px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 2px solid var(--gold);
+}
+
+.timeline-item.active:after {
+  background: var(--gold);
+  box-shadow: 0 0 18px var(--gold);
+}
+
+.timeline-item span {
+  color: var(--gold);
+  font-weight: 800;
+}
+
+.timeline-item p {
+  margin: 0;
+  font-size: 17px;
+}
+
+/*============================================================
+  12 - SECTION CANTIQUES
+  Carte avec image à gauche, description à droite et bouton.
+============================================================*/
+.cantique-promo {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Image de la section cantiques */
+.cantique-image img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 45px var(--shadow);
+}
+
+/* Texte de la section cantiques */
+.cantique-content {
+  display: flex;
+  flex-direction: column;
+  min-height: 260px;
+}
+
+.cantique-content p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+/* Bouton cantiques aligné en bas à droite */
+.cantique-button {
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+/*============================================================
+  13 - SECTION HOMMAGES
+  Livre d'or, message de soutien et bouton WhatsApp.
+============================================================*/
+.actions-row {
+  margin-top: 22px;
+}
+
+/*============================================================
+  14 - SECTION GALERIE
+  Diaporama automatique des photos.
+============================================================*/
+.slideshow {
+  position: relative;
+  max-width: 850px;
+  height: 520px;
+  margin: 25px auto 0;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 55px var(--shadow);
+  background: #000;
+}
+
+.slides {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+/* Les images ne sont pas coupées : object-fit contain */
+.slide {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #000;
+  opacity: 0;
+  transform: scale(1.02);
+  transition: opacity 2s ease, transform 7s ease;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Boutons précédent / suivant du diaporama */
+.slide-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 3;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(0, 0, 0, 0.45);
+  color: white;
+  font-size: 38px;
+  cursor: pointer;
+}
+
+.slide-btn.prev {
+  left: 18px;
+}
+
+.slide-btn.next {
+  right: 18px;
+}
+
+/* Petits points en bas du diaporama */
+.slide-dots {
+  position: absolute;
+  z-index: 3;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.dot.active {
+  background: var(--gold);
+  transform: scale(1.3);
+}
+
+/*============================================================
+  15 - SECTION INFORMATIONS PRATIQUES
+  Lieu, horaire, contact, accès.
+============================================================*/
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-bottom: 20px;
+}
+
+.info-box {
+  background: var(--card-strong);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 18px;
+  border-radius: 22px;
+}
+
+.info-box h3 {
+  margin-top: 0;
+}
+
+/*============================================================
+  16 - SECTION DIRECT YOUTUBE
+  Cadre vidéo responsive.
+============================================================*/
+.video-box {
+  position: relative;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 22px;
+  background: #000;
+  border: 1px solid var(--line);
+}
+
+.video-box iframe {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/*============================================================
+  17 - SECTION MOT DE CONSOLATION
+  Dernier message avant le footer.
+============================================================*/
+.comfort-section {
+  text-align: center;
+}
+
+.comfort-section p {
+  font-size: clamp(19px, 3vw, 24px);
+  line-height: 1.7;
+  max-width: 820px;
+  margin: auto;
+}
+
+/*============================================================
+  18 - NOTES ET PETITS TEXTES
+============================================================*/
+.note {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+/*============================================================
+  19 - BOUTON WHATSAPP FLOTTANT
+  Bouton rond fixé en bas à droite.
+============================================================*/
+.floating-contact {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #178f4a;
+  color: #fff;
+  text-decoration: none;
+  font-size: 24px;
+  box-shadow: 0 12px 30px var(--shadow);
+}
+
+/*============================================================
+  20 - FOOTER
+  Bas de page.
+============================================================*/
+footer {
+  text-align: center;
+  padding: 32px 18px;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+}
+
+/*============================================================
+  21 - ANIMATIONS AU DÉFILEMENT
+  Les éléments apparaissent quand ils deviennent visibles.
+============================================================*/
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/*============================================================
+  22 - KEYFRAMES / ANIMATIONS
+============================================================*/
+@keyframes flicker {
+  0% {
+    transform: rotate(-2deg) scale(1);
+    opacity: 0.85;
+  }
+  100% {
+    transform: rotate(3deg) scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes slowZoom {
+  from {
+    transform: scale(1.03);
+  }
+  to {
+    transform: scale(1.11);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(35px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*============================================================
+  23 - RESPONSIVE TABLETTE / TÉLÉPHONE
+  Adaptation des sections sur les petits écrans.
+============================================================*/
+@media (max-width: 720px) {
+  /* Accueil */
+  .portrait-frame {
+    width: clamp(250px, 78vw, 320px);
+    height: clamp(250px, 78vw, 320px);
+  }
+
+  .hero h1 {
+    font-size: clamp(25px, 7vw, 36px);
+  }
+
+  /* Compte à rebours */
+  .countdown {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Programme */
+  .timeline:before {
+    left: 16px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 1fr;
+    padding-left: 42px;
+    gap: 5px;
+  }
+
+  .timeline-item:after {
+    left: 10px;
+  }
+
+  /* Cantiques */
+  .cantique-promo {
+    grid-template-columns: 1fr;
+  }
+
+  .cantique-image img {
+    height: 220px;
+  }
+
+  .cantique-button {
+    align-self: stretch;
+    text-align: center;
+  }
+
+  /* Galerie */
+  .slideshow {
+    height: 390px;
+    border-radius: 22px;
+  }
+
+  .slide-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 30px;
+  }
+
+  /* Informations */
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 430px) {
+  .menu {
+    justify-content: flex-start;
+  }
+
+  .hero {
+    padding: 24px 14px;
+  }
+
+  .welcome-card,
+  .card-section,
+  .comfort-section {
+    border-radius: 22px;
+  }
+}

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veillée de recueillement</title>
+  <meta name="description" content="Site de veillée de recueillement : programme, cantiques, hommages, informations pratiques et diffusion en direct." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!--
+  ==========================================================
+    MemorialSite Pro v2.0
+    Site de veillée de recueillement
+    Base stabilisée : HTML propre + CSS commenté
+  ==========================================================
+  -->
+  <div class="page-loader" id="loader">
+    <div class="candle-loader"></div>
+    <p>Chargement de la veillée...</p>
+  </div>
+
+  <button class="theme-toggle" id="themeToggle" aria-label="Changer le thème">☀️</button>
+
+  <header class="hero" id="accueil">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content reveal">
+      <!--<div class="candle">
+        <span class="flame"></span>
+        <span class="wick"></span>
+        <span class="wax"></span>
+      </div>-->
+
+      <div class="portrait-frame">
+        <img src="assets/defunte.png" alt="Photo de la défunte" />
+      </div>
+
+      <p class="small-title">Veillée de recueillement</p>
+      <h1>Maman Guika Jeanette <br>veuve Mbou (Ma Jea)</h1>
+      <p class="dates">1954 — 2026</p>
+
+      <p class="verse">
+        « L'Éternel a donné, et l'Éternel a ôté; que le nom de l'Éternel soit béni! »
+        <br><span>Job 1:21b</span>
+      </p>
+
+      <div class="countdown" id="countdown">
+        <div><strong id="days">00</strong><span>Jours</span></div>
+        <div><strong id="hours">00</strong><span>Heures</span></div>
+        <div><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div><strong id="seconds">00</strong><span>Secondes</span></div>
+      </div>
+
+      <div class="hero-actions">
+        <a href="#programme" class="main-button">Entrer dans la veillée</a>
+        <a href="#cantiques" class="ghost-button">Répertoire des chants</a>
+      </div>
+    </div>
+  </header>
+
+  <nav class="menu" id="menu">
+    <a href="#accueil">Accueil</a>
+    <a href="#programme">Programme</a>
+    <a href="#cantiques">Cantiques</a>
+    <a href="#hommages">Hommages</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#infos">Infos</a>
+    <a href="#direct">Direct</a>
+  </nav>
+
+  <main>
+    <section class="welcome-card reveal">
+      <p>
+        Bienvenue sur l’espace numérique de cette veillée de recueillement.
+        Vous y trouverez le programme, les cantiques, les informations pratiques
+        et un espace pour laisser un message à la famille.
+      </p>
+    </section>
+
+    <section id="programme" class="card-section reveal">
+      <div class="section-title">
+        <p>Déroulement</p>
+        <h2>Programme de la veillée</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item active"><span>17h00</span><p>Accueil des invités</p></div>
+        <div class="timeline-item"><span>17h10</span><p>Mot d'ouverture</p></div>
+        <div class="timeline-item"><span>17h20</span><p>Cantiques et louanges</p></div>
+        <div class="timeline-item"><span>17h45</span><p>Lecture biblique et exhortation</p></div>
+        <div class="timeline-item"><span>18h15</span><p>Témoignages de la famille</p></div>
+        <div class="timeline-item"><span>18h45</span><p>Temps de prière</p></div>
+        <div class="timeline-item"><span>19h10</span><p>Remerciements</p></div>
+        <div class="timeline-item"><span>19h30</span><p>Clôture</p></div>
+      </div>
+    </section>
+
+    <section id="cantiques" class="card-section reveal">
+      <div class="cantique-promo">
+        <div class="cantique-image">
+          <img src="assets/IMG_RECCHANT.png" alt="Cantiques et chants" />
+        </div>
+
+        <div class="cantique-content">
+          <div class="section-title">
+            <p>Recueil des chants de la veillée</p>
+            <h2>Cantiques</h2>
+          </div>
+
+          <p>
+            Retrouvez les cantiques prévus pour la veillée dans une interface simple,
+            claire et adaptée aux téléphones. Vous pouvez rechercher rapidement un chant
+            par numéro, titre ou parole.
+          </p>
+
+          <a href="https://veillee-maa-jea.netlify.app/" target="_blank" class="cantique-button">
+            Ouvrir les cantiques
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="hommages" class="card-section reveal">
+      <div class="section-title">
+        <p>Soutien</p>
+        <h2>Livre d’or / Hommages</h2>
+      </div>
+
+      <p>
+        Vous pouvez laisser un message de soutien, une prière ou un souvenir
+        à l’attention de la famille.
+      </p>
+
+      <div class="actions-row">
+        <a class="secondary-button" href="https://forms.google.com" target="_blank">Laisser un message</a>
+        <a class="whatsapp-button" href="https://wa.me/491762491317" target="_blank">Écrire sur WhatsApp</a>
+      </div>
+
+      <!-- <p class="note">Remplace les liens par ton Google Form et ton numéro WhatsApp.</p> -->
+    </section>
+
+    <section id="galerie" class="card-section reveal">
+      <div class="section-title">
+        <p>Souvenirs</p>
+        <h2>Galerie photos</h2>
+      </div>
+
+      <div class="slideshow">
+        <button class="slide-btn prev" onclick="changeSlide(-1)">‹</button>
+
+        <div class="slides" id="slidesContainer"></div>
+
+        <button class="slide-btn next" onclick="changeSlide(1)">›</button>
+
+        <div class="slide-dots" id="dotsContainer"></div>
+      </div>
+    </section>
+
+    <section id="infos" class="card-section reveal">
+      <div class="section-title">
+        <p>Organisation</p>
+        <h2>Informations pratiques</h2>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-box">
+          <h3>📍 Lieu</h3>
+          <p>Waldenserhalle Pinache<br>Kaltenbergweg 5,<br>75446 Wiernsheim</p>
+        </div>
+        <div class="info-box">
+          <h3>🕔 Horaire</h3>
+          <p>Début : 17h00<br>Durée estimée : 2h30</p>
+        </div>
+        <div class="info-box">
+          <h3>📞 Contact</h3>
+          <p>Fabrice : +49 176 35093351<br>Famille : +49 176 72403800</p>
+        </div>
+        <div class="info-box">
+          <h3>🚗 Accès</h3>
+          <p>Parking disponible<br>Arrivée recommandée 15 minutes avant.</p>
+        </div>
+      </div>
+
+      <a class="secondary-button" href="https://www.google.com/maps/place/Waldenserhalle/@48.9046738,8.8461885,17z/data=!3m1!4b1!4m6!3m5!1s0x47977a5870104c6f:0xc7f893626123e1f4!8m2!3d48.9046703!4d8.8487634!16s%2Fg%2F11b6d4_2zn?entry=ttu&g_ep=EgoyMDI2MDYyMy4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ouvrir l’itinéraire</a>
+    </section>
+
+    <section id="direct" class="card-section reveal">
+      <div class="section-title">
+        <p>À distance</p>
+        <h2>Diffusion en direct</h2>
+      </div>
+
+      <p>Le direct sera disponible ici au moment de la veillée si tout se passe bien.</p>
+
+      <div class="video-box">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Direct YouTube" allowfullscreen></iframe>
+      </div>
+
+     <!-- <p class="note">Remplace VIDEO_ID par l’identifiant de ta vidéo YouTube.</p> -->
+    </section>
+
+    <section class="comfort-section reveal">
+      <h2>Mot de consolation</h2>
+      <p>
+        Nous gardons dans nos cœurs le souvenir d'une vie précieuse.
+        Que la paix de Dieu console la famille, fortifie les proches
+        et accompagne chacun dans ce moment de recueillement.
+      </p>
+    </section>
+  </main>
+
+  <a class="floating-contact" href="https://wa.me/4917624913117" target="_blank" aria-label="Contact WhatsApp">💬</a>
+
+  <footer>
+    <p>Avec amour et reconnaissance — Famille MBOU</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
