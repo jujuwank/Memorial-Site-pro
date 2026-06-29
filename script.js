@@ -12,9 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
     initLoader();
     initTheme();
     initCountdown();
+    initDynamicTimeline();
     initReveal();
     initMenu();
     initGallery();
+    initGalleryMusic();
 
 });
 
@@ -123,6 +125,67 @@ function initCountdown(){
 
 }
 
+/******************************************************************
+ * TIMELINE DYNAMIQUE
+ ******************************************************************/
+
+//#region TIMELINE DYNAMIQUE PROGRAMME
+
+function initDynamicTimeline() {
+  const eventDate = "2026-07-04";
+  const items = document.querySelectorAll(".dynamic-timeline .timeline-item");
+
+  if (!items.length) return;
+
+  function getTodayDate() {
+    const now = new Date();
+
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, "0");
+    const day = String(now.getDate()).padStart(2, "0");
+
+    return `${year}-${month}-${day}`;
+  }
+
+  function timeToMinutes(time) {
+    const [hours, minutes] = time.split(":").map(Number);
+    return hours * 60 + minutes;
+  }
+
+  function resetTimeline() {
+    items.forEach(item => {
+      item.classList.remove("active", "done", "upcoming");
+    });
+  }
+
+  function updateTimeline() {
+    const today = getTodayDate();
+
+    if (today !== eventDate) {
+      resetTimeline();
+      return;
+    }
+
+    const now = new Date();
+    const currentMinutes = now.getHours() * 60 + now.getMinutes();
+
+    items.forEach(item => {
+      const start = timeToMinutes(item.dataset.start);
+      const end = timeToMinutes(item.dataset.end);
+
+      item.classList.remove("active", "done", "upcoming");
+
+      if (currentMinutes >= start && currentMinutes < end) {
+        item.classList.add("active");
+      }
+    });
+  }
+
+  updateTimeline();
+  setInterval(updateTimeline, 30000);
+}
+
+//#endregion
 
 /******************************************************************
  * ANIMATION AU SCROLL
@@ -280,3 +343,31 @@ function initGallery(){
     },5000);
 
 }
+
+//#region MUSIQUE GALERIE
+
+function initGalleryMusic() {
+  const music = document.getElementById("galleryMusic");
+  const button = document.getElementById("musicToggle");
+
+  if (!music || !button) return;
+
+  music.volume = 0.35;
+
+  music.play().catch(() => {
+    // Le navigateur peut bloquer la lecture automatique.
+  });
+
+  button.addEventListener("click", () => {
+    if (music.muted) {
+      music.muted = false;
+      music.play();
+      button.textContent = "🔊 Couper le son";
+    } else {
+      music.muted = true;
+      button.textContent = "🔇 Activer le son";
+    }
+  });
+}
+
+//#endregion

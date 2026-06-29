@@ -79,7 +79,12 @@
       </p>
     </section>
 
-    <section id="programme" class="card-section reveal">
+
+    <!--- *******************************************
+                        PROGRAMME VEILLE   
+          *******************************************-->
+
+   <!-- <section id="programme" class="card-section reveal">
       <div class="section-title">
         <p>Déroulement</p>
         <h2>Programme de la veillée</h2>
@@ -96,6 +101,102 @@
         <div class="timeline-item"><span>19h30</span><p>Clôture</p></div>
       </div>
     </section>
+  -->
+
+    <section id="programme" class="card-section reveal">
+      <div class="section-title">
+        <p>Déroulement</p>
+        <h2>Programme de la veillée</h2>
+      </div>
+
+      <div class="timeline dynamic-timeline">
+
+        <div class="timeline-item" data-start="17:00" data-end="17:10">
+          <span>17:00</span>
+          <p>Accueil des participants et installation</p>
+        </div>
+
+        <div class="timeline-item" data-start="17:10" data-end="17:15">
+          <span>17:10</span>
+          <p>Mot de bienvenue et présentation du programme</p>
+        </div>
+
+        <div class="timeline-item" data-start="17:15" data-end="17:20">
+          <span>17:15</span>
+          <p>Prière d'ouverture</p>
+        </div>
+
+        <div class="timeline-item" data-start="17:20" data-end="17:45">
+          <span>17:20</span>
+          <p>Chants de recueillement</p>
+        </div>
+
+        <div class="timeline-item" data-start="17:45" data-end="18:05">
+          <span>17:45</span>
+          <p>Témoignages de la famille proche</p>
+        </div>
+
+        <div class="timeline-item" data-start="18:05" data-end="18:20">
+          <span>18:05</span>
+          <p>Chant de recueillement</p>
+        </div>
+
+        <div class="timeline-item" data-start="18:20" data-end="18:40">
+          <span>18:20</span>
+          <p>Témoignages des amis, collègues et connaissances</p>
+        </div>
+
+        <div class="timeline-item" data-start="18:40" data-end="18:45">
+          <span>18:40</span>
+          <p>Projection photos / vidéo souvenir</p>
+        </div>
+
+        <div class="timeline-item" data-start="18:45" data-end="18:55">
+          <span>18:45</span>
+          <p>Chant d'espérance et de consolation</p>
+        </div>
+
+        <div class="timeline-item" data-start="18:55" data-end="19:20">
+          <span>18:55</span>
+          <p>Exhortation principale</p>
+        </div>
+
+        <div class="timeline-item" data-start="19:20" data-end="19:25">
+          <span>19:20</span>
+          <p>Prière pour la famille endeuillée</p>
+        </div>
+
+        <div class="timeline-item" data-start="19:25" data-end="19:30">
+          <span>19:25</span>
+          <p>Informations pratiques sur les obsèques</p>
+        </div>
+
+        <div class="timeline-item" data-start="19:30" data-end="19:40">
+          <span>19:30</span>
+          <p>Dons + Contributions</p>
+        </div>
+
+        <div class="timeline-item" data-start="19:40" data-end="19:45">
+          <span>19:40</span>
+          <p>Remerciements de la famille</p>
+        </div>
+
+        <div class="timeline-item" data-start="19:45" data-end="19:50">
+          <span>19:45</span>
+          <p>Prière finale et bénédiction</p>
+        </div>
+
+        <div class="timeline-item" data-start="19:50" data-end="20:30">
+          <span>19:50</span>
+          <p>Collation</p>
+        </div>
+
+      </div>
+    </section>
+
+<!--- *******************************************
+                        CANTIQUES   
+          *******************************************-->
 
     <section id="cantiques" class="card-section reveal">
       <div class="cantique-promo">
@@ -134,13 +235,17 @@
       </p>
 
       <div class="actions-row">
-        <a class="secondary-button" href="https://forms.google.com" target="_blank">Laisser un message</a>
-        <a class="whatsapp-button" href="https://wa.me/491762491317" target="_blank">Écrire sur WhatsApp</a>
+        <a class="secondary-button" href="https://docs.google.com/forms/d/e/1FAIpQLSfpRi5QY1ne8tRG03ZlBg6rGNmqCOiO2ALwaxTpCaufe9atmA/viewform?usp=publish-editor" target="_blank">Laisser un message</a>
+        <a class="whatsapp-button" href="https://wa.me/4917664204344" target="_blank">Écrire sur WhatsApp</a>
       </div>
 
       <!-- <p class="note">Remplace les liens par ton Google Form et ton numéro WhatsApp.</p> -->
     </section>
 
+
+    <!--- *******************************************
+                        GALERIE PHOTOS   
+          *******************************************-->
     <section id="galerie" class="card-section reveal">
       <div class="section-title">
         <p>Souvenirs</p>
@@ -155,6 +260,14 @@
         <button class="slide-btn next" onclick="changeSlide(1)">›</button>
 
         <div class="slide-dots" id="dotsContainer"></div>
+
+        <audio id="galleryMusic" loop muted>
+          <source src="assets/musique-galerie.mp3" type="audio/mpeg">
+        </audio> 
+
+        <button id="musicToggle" class="music-toggle">
+          🔇 Activer le son
+        </button>
       </div>
     </section>
 
@@ -200,6 +313,56 @@
 
      <!-- <p class="note">Remplace VIDEO_ID par l’identifiant de ta vidéo YouTube.</p> -->
     </section>
+
+    <!--- *******************************************
+                        Programme Inhumation   
+          *******************************************-->
+          <section id="programme-enterrement" class="card-section reveal">
+            <div class="section-title">
+              <p>Obsèques</p>
+              <h2>Programme de l’enterrement</h2>
+            </div>
+
+            <div class="funeral-program">
+
+              <div class="funeral-item">
+                <div class="funeral-date">
+                  <span>30</span>
+                  <small>Juillet 2026</small>
+                </div>
+
+                <div class="funeral-content">
+                  <h3>Levée de corps</h3>
+                  <p><strong>Lieu :</strong> Morgue de l’hôpital Gynéco de Yaoundé</p>
+                </div>
+              </div>
+
+              <div class="funeral-item">
+                <div class="funeral-date">
+                  <span>31</span>
+                  <small>Juillet 2026</small>
+                </div>
+
+                <div class="funeral-content">
+                  <h3>Voyage pour le village suivi de la veillée</h3>
+                  <p><strong>Lieu :</strong> Mbouda</p>
+                  </div>
+              </div>
+
+              <div class="funeral-item">
+                <div class="funeral-date">
+                  <span>01</span>
+                  <small>Août 2026</small>
+                </div>
+
+                <div class="funeral-content">
+                  <h3>Inhumation</h3>
+                  <p><strong>Lieu :</strong> Mbouda</p>
+                </div>
+              </div>
+
+            </div>
+          </section>
 
     <section class="comfort-section reveal">
       <h2>Mot de consolation</h2>
