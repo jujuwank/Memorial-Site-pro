@@ -275,8 +275,17 @@ function initGallery(){
         "photo4.jpeg",
         "photo5.jpeg",
         "photo6.jpeg",
-        "photo7.jpeg" /*,
-        "photo5.jpeg"  */
+        "photo7.jpeg",
+        "photo9.jpeg",
+        "photo10.jpeg",
+        "photo11.jpeg", 
+        "photo12.jpeg", 
+        "photo13.jpeg",
+        "photo14.jpeg",
+        "photo15.jpeg"/*, 
+        "photo16.jpeg",
+        "photo17.jpeg",
+        "photo18.jpeg"  */
 
     ];
 
